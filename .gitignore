@@ -1,0 +1,106 @@
+# Environment & Secrets
+.env
+.env*.local
+*.pem
+*.key
+
+# Python Virtual Environments
+.venv/
+.venv-*/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python Bytecode & Caches
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyc
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Linting Caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+htmlcov/
+
+# Logs
+*.log
+logs/*
+!logs/.gitkeep
+data/logs/*
+!data/logs/.gitkeep
+
+# Data directories & local stores
+data/chroma/
+data/bm25/
+data/index_meta/
+data/uploads/
+data/evaluation/*
+!data/evaluation/.gitkeep
+data/indexes/*
+!data/indexes/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/raw/*
+!data/raw/.gitkeep
+!data/.gitkeep
+*.sqlite3
+*.db
+*.pkl
+eval_results.json
+eval_tuning.json
+
+# Downloaded models and generated artifacts
+models/
+artifacts/
+tmp/
+*.tmp
+
+# Operating System & IDE Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archives & Backups
+*.tar.gz
+*.bak
+*.swp
+*.swo
+*~

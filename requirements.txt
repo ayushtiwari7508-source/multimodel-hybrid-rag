@@ -1,0 +1,50 @@
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+streamlit>=1.30.0
+requests>=2.31.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+python-multipart>=0.0.9
+httpx>=0.26.0
+
+# LangChain (optional — used by some loaders, not required for core path)
+langchain>=0.1.0
+langchain-community>=0.0.20
+langchain-core>=0.1.0
+
+# Document loaders
+pypdf>=4.0.0
+pdfplumber>=0.10.0
+pdf2image>=1.17.0
+python-docx>=1.1.0
+python-pptx>=0.6.23
+openpyxl>=3.1.2
+markdown>=3.5
+beautifulsoup4>=4.12.0
+lxml>=4.9.3
+
+# Multimodal extraction
+Pillow>=10.2.0
+pytesseract>=0.3.10
+img2table>=0.4.0
+camelot-py[base]>=0.11.0
+
+# Vector store + retrieval
+chromadb>=0.4.22
+sentence-transformers>=2.5.0
+rank-bm25>=0.2.2
+numpy>=1.26.0
+
+# Utils
+tenacity>=8.2.3
+tiktoken>=0.5.2
+tqdm>=4.66.0
+rich>=13.7.0
+
+# Tests
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+ruff>=0.9.0
+
+# Optional (heavy, slow to install, requires system setuptools):
+# unstructured[all-docs]>=0.12.0
