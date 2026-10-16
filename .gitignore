@@ -80,9 +80,11 @@ eval_results.json
 eval_tuning.json
 
 # Downloaded models and generated artifacts
-models/
-artifacts/
-tmp/
+# (root-anchored: the old bare `models/` rule also matched backend/app/models/)
+/models/**
+!/models/README.md
+/artifacts/
+/tmp/
 *.tmp
 
 # Operating System & IDE Files
