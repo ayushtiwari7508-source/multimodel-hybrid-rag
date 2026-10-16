@@ -1,4 +1,5 @@
 """Backward compatibility shim for app.models."""
+
 from backend.app.models import (
     Answer,
     Citation,

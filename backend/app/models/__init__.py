@@ -1,4 +1,5 @@
 """Models package."""
+
 from backend.app.models.domain import (
     Answer,
     Citation,
