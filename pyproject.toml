@@ -14,7 +14,7 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"ui/*.py" = ["E501"]
+"frontend/*.py" = ["E501"]
 "scripts/*.py" = ["E501", "PLW2901", "E402", "S607", "S104"]
 "tests/*.py" = ["S101"]
 "tests/**/*.py" = ["S101"]

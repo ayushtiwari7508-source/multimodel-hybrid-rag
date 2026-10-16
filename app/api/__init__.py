@@ -1,4 +1,5 @@
 """API package - backward compatibility."""
-from backend.app.api.main import app, pipeline, get_pipeline
 
-__all__ = ["app", "pipeline", "get_pipeline"]
+from backend.app.api.main import app, get_pipeline, pipeline
+
+__all__ = ["app", "get_pipeline", "pipeline"]

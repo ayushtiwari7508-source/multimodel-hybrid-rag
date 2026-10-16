@@ -1,26 +1,27 @@
 """Backward-compatibility shim for app.retrieval. Use backend.app.retrieval instead."""
+
 from backend.app.retrieval import (
-    HybridRetriever,
     CrossEncoderReranker,
-    OllamaReranker,
-    Reranker,
-    rrf,
-    normalize_scores,
     Hit,
+    HybridRetriever,
+    OllamaReranker,
     PipelineRoute,
+    Reranker,
+    normalize_scores,
+    rrf,
 )
 
 __all__ = [
+    "CrossEncoderReranker",
     "Hit",
     "HybridRetriever",
-    "CrossEncoderReranker",
     "OllamaReranker",
-    "Reranker",
-    "rrf",
-    "normalize_scores",
-    "_rrf",
-    "_normalize_scores",
     "PipelineRoute",
+    "Reranker",
+    "_normalize_scores",
+    "_rrf",
+    "normalize_scores",
+    "rrf",
 ]
 
 # Backward compatibility aliases

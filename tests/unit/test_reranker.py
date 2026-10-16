@@ -1,4 +1,5 @@
 """Tests for app/reranker.py and retriever rerank dispatch."""
+
 from __future__ import annotations
 
 from unittest.mock import MagicMock, patch

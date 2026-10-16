@@ -57,7 +57,12 @@ class ChromaStore:
         self._ensure_collection()
         try:
             res = self.collection.delete(where=where)
-            return len(res.get("ids", [])) if res else 0
+            if isinstance(res, dict):
+                # Newer Chroma returns {"deleted": n}; older returns {"ids": [...]}
+                if "ids" in res:
+                    return len(res["ids"])
+                return int(res.get("deleted", 0))
+            return len(res) if res else 0
         except Exception:
             return 0
 

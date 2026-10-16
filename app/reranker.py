@@ -2,4 +2,4 @@
 
 from app.reranking.reranker import CrossEncoderReranker, OllamaReranker, Reranker
 
-__all__ = ["Reranker", "CrossEncoderReranker", "OllamaReranker"]
+__all__ = ["CrossEncoderReranker", "OllamaReranker", "Reranker"]

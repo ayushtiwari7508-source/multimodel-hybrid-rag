@@ -1,4 +1,5 @@
 """Evaluation harness: runs queries, measures hit rate, citation precision, route accuracy."""
+
 from __future__ import annotations
 
 import json

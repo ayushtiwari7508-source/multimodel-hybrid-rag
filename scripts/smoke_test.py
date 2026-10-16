@@ -3,6 +3,7 @@
 Run:
     python scripts/smoke_test.py
 """
+
 from __future__ import annotations
 
 import sys
@@ -13,22 +14,22 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from backend.app.core.config import get_settings
-from backend.app.services.query_service import QueryService
-from backend.app.ingestion.pipeline import Ingestor
-from backend.app.retrieval.vector_search import ChromaStore
-from backend.app.retrieval.keyword_search import BM25Store
 from backend.app.generation.llm import OllamaClient
+from backend.app.ingestion.pipeline import Ingestor
+from backend.app.retrieval.keyword_search import BM25Store
+from backend.app.retrieval.vector_search import ChromaStore
+from backend.app.services.query_service import QueryService
 
 
 def main() -> int:
     settings = get_settings()
-    
+
     # Create components
     ollama = OllamaClient()
     chroma = ChromaStore(settings.chroma_persist_dir)
     bm25 = BM25Store(settings.bm25_persist_path)
     ingestor = Ingestor(ollama, chroma, bm25)
-    
+
     pipe = QueryService()
     if not pipe.ollama.health():
         print("Ollama not reachable at", settings.ollama_base_url)

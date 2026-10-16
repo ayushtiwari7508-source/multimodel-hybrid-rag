@@ -21,13 +21,13 @@ def api_env(tmp_index_dir, monkeypatch):
     monkeypatch.setenv("API_PORT", "8765")
 
     # Force a fresh config + pipeline
-    from app.config import get_settings
+    from backend.app.core.config import get_settings
 
     get_settings.cache_clear()
 
-    # Stub the RAGPipeline class before app.api imports it
-    import app.api as api_mod
-    from app.api import app
+    # Stub the pipeline before route handlers resolve it
+    import backend.app.api.main as api_mod
+    from backend.app.api.main import app
 
     stub = MagicMock()
     stub.ollama.health.return_value = True
@@ -42,7 +42,18 @@ def api_env(tmp_index_dir, monkeypatch):
     stub.ingest.return_value = {"chunks": 0, "docs": {}}
     stub.clear.return_value = None
 
+    # The refactored API splits access points: query/health keep their own lazy
+    # pipeline singleton, document routes route through a DocumentService.
+    # Inject the stub into each access point used by the routes.
+    from backend.app.api.routes import documents as documents_route
+    from backend.app.api.routes import health as health_route
+    from backend.app.api.routes import query as query_route
+
     api_mod.pipeline = stub
+    query_route._pipeline = stub
+    health_route._pipeline = stub
+    documents_route._document_service = stub
+
     client = TestClient(app)
     yield client, stub
     get_settings.cache_clear()
@@ -133,12 +144,12 @@ def test_query_validation(api_env):
 
 def test_ingest_text_routes_to_pipeline(api_env):
     client, stub = api_env
-    stub.ingest.return_value = {"chunks": 1, "docs": {"k": 1}}
+    stub.ingest_text.return_value = {"chunks": 1, "docs": {"k": 1}}
     r = client.post("/ingest/text", json={"text": "hello", "source": "t"})
     assert r.status_code == 200
     data = r.json()
     assert data["ok"] is True
-    stub.ingest.assert_called_once_with(text="hello", source="t")
+    stub.ingest_text.assert_called_once_with("hello", "t")
 
 
 def test_clear_routes_to_pipeline(api_env):

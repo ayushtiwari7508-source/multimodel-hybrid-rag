@@ -1,4 +1,5 @@
 """Backward-compatibility shim for app.api.dependencies. Use backend.app.api.dependencies instead."""
+
 from backend.app.api.dependencies import (
     RateLimiter,
     _rate_limiter,

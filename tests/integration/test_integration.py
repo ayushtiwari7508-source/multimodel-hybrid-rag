@@ -57,7 +57,7 @@ def test_ingest_and_retrieve(live_pipeline):
         "Cross-encoders rerank for higher precision.\n",
         encoding="utf-8",
     )
-    res = live_pipeline.ingest(paths=[str(doc)])
+    res = live_pipeline.ingestor.ingest_paths([str(doc)])
     assert res["chunks"] >= 1
     assert live_pipeline.chroma.count() >= 1
 
@@ -83,7 +83,7 @@ def test_query_returns_citations_and_route(live_pipeline):
         "Cross-encoders rerank for higher precision.\n",
         encoding="utf-8",
     )
-    live_pipeline.ingest(paths=[str(doc)])
+    live_pipeline.ingestor.ingest_paths([str(doc)])
 
     res = live_pipeline.query("Explain how BM25 works in detail")
     assert res.route.name in {"general", "multimodal", "fast", "code", "math"}

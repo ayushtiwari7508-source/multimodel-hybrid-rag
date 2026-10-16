@@ -19,9 +19,9 @@ jobs:
       - name: Install ruff
         run: pip install ruff
       - name: Ruff check
-        run: ruff check app scripts ui tests
+        run: ruff check app scripts frontend tests
       - name: Ruff format check
-        run: ruff format --check app scripts ui tests
+        run: ruff format --check app scripts frontend tests
 
   test:
     name: Tests

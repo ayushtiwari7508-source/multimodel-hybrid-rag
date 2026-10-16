@@ -1,4 +1,5 @@
 """Backward compatibility shim for app.schemas."""
+
 from backend.app.schemas import (
     CitationModel,
     HitModel,

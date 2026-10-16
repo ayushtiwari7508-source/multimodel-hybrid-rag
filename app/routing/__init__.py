@@ -1,8 +1,9 @@
 """Backward compatibility shim for app.routing."""
+
 from backend.app.routing import (
+    ModelRouter,
     PipelineRoute,
     QueryClassifier,
-    ModelRouter,
 )
 
-__all__ = ["PipelineRoute", "QueryClassifier", "ModelRouter"]
+__all__ = ["ModelRouter", "PipelineRoute", "QueryClassifier"]

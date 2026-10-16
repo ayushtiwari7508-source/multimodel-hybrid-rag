@@ -7,7 +7,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from app.retrieval import Hit, HybridRetriever, _normalize_scores, _rrf, PipelineRoute
+from app.retrieval import Hit, HybridRetriever, _normalize_scores, _rrf
 
 
 def test_normalize_basic():

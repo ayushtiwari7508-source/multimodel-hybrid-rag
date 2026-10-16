@@ -3,4 +3,4 @@
 from app.core.observability import get_logger, stable_hash
 from app.utils.helpers import chunk_text
 
-__all__ = ["get_logger", "stable_hash", "chunk_text"]
+__all__ = ["chunk_text", "get_logger", "stable_hash"]

@@ -1,4 +1,5 @@
 """Evaluation dataset: Q&A pairs for retrieval + generation quality."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -51,7 +52,6 @@ DATASET = [
         route_hint="fast",
         description="Polite closing - fast route",
     ),
-
     # === CODE ROUTE (programming, debugging, SQL, regex) ===
     QAPair(
         question="Write a Python function to compute cosine similarity",
@@ -95,7 +95,6 @@ DATASET = [
         route_hint="code",
         description="Vector database initialization code - code route",
     ),
-
     # === MATH ROUTE (equations, proofs, formulas) ===
     QAPair(
         question="Explain the equation for cosine similarity",
@@ -132,7 +131,6 @@ DATASET = [
         route_hint="math",
         description="Vector space geometry - math route",
     ),
-
     # === MULTIMODAL ROUTE (tables, charts, images) ===
     QAPair(
         question="What does the model comparison table show?",
@@ -169,7 +167,6 @@ DATASET = [
         route_hint="multimodal",
         description="Image processing pipeline - multimodal route",
     ),
-
     # === GENERAL/RAG ROUTE (complex queries needing retrieval) ===
     QAPair(
         question="How does hybrid RAG combine BM25 and dense retrieval?",
@@ -208,7 +205,14 @@ DATASET = [
     ),
     QAPair(
         question="What are the default configuration parameters for the RAG system?",
-        expected_keywords=["chunk_size=900", "chunk_overlap=150", "top_k_bm25=25", "top_k_dense=25", "top_k_rerank=6", "rrf_c=60"],
+        expected_keywords=[
+            "chunk_size=900",
+            "chunk_overlap=150",
+            "top_k_bm25=25",
+            "top_k_dense=25",
+            "top_k_rerank=6",
+            "rrf_c=60",
+        ],
         expected_source_contains="rag_basics",
         route_hint="general",
         description="Configuration defaults - general RAG route",

@@ -48,8 +48,11 @@ def rate_limit(request: Request) -> None:
     """Per-IP rate limit; returns 429 if exceeded."""
     import sys
 
-    api_mod = sys.modules.get("app.api")
-    limiter = getattr(api_mod, "_rate_limiter", _rate_limiter)
+    main_mod = sys.modules.get("backend.app.api.main")
+    limiter = getattr(main_mod, "_rate_limiter", None)
+    if limiter is None:
+        compat_mod = sys.modules.get("app.api")  # legacy compat surface
+        limiter = getattr(compat_mod, "_rate_limiter", None) or _rate_limiter
     current = get_settings()
 
     ip = request.client.host if request.client else "unknown"

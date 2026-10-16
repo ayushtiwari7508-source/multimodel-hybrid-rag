@@ -1,8 +1,9 @@
 """Backward compatibility shim for app.services."""
+
 from backend.app.services import (
+    DocumentService,
     QueryService,
     RAGResponse,
-    DocumentService,
 )
 
-__all__ = ["QueryService", "RAGResponse", "DocumentService"]
+__all__ = ["DocumentService", "QueryService", "RAGResponse"]

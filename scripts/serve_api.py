@@ -1,4 +1,5 @@
 """Convenience runner: uvicorn for the FastAPI app."""
+
 from __future__ import annotations
 
 import sys

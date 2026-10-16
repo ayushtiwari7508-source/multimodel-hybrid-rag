@@ -17,12 +17,12 @@ def api_env_auth(tmp_index_dir, monkeypatch):
     monkeypatch.setenv("API_KEY", "secret-key-123")
     monkeypatch.setenv("RATE_LIMIT_PER_MIN", "5")
 
-    from app.config import get_settings
+    from backend.app.core.config import get_settings
 
     get_settings.cache_clear()
 
-    import app.api as api_mod
-    from app.api import app
+    import backend.app.api.main as api_mod
+    from backend.app.api.main import app
 
     stub = MagicMock()
     stub.ollama.health.return_value = True
@@ -41,6 +41,12 @@ def api_env_auth(tmp_index_dir, monkeypatch):
     stub.clear.return_value = None
 
     api_mod.pipeline = stub
+
+    # Route modules keep their own lazy singletons; inject there too.
+    from backend.app.api.routes import query as query_route
+
+    query_route._pipeline = stub
+
     api_mod._rate_limiter = api_mod.RateLimiter(5)
 
     # Reset metrics
@@ -142,12 +148,12 @@ def test_health_endpoint_includes_request_id():
     monkeypatch.setenv("META_PERSIST_DIR", "./data/index_meta")
     monkeypatch.setenv("API_KEY", "")
 
-    from app.config import get_settings
+    from backend.app.core.config import get_settings
 
     get_settings.cache_clear()
 
-    import app.api as api_mod
-    from app.api import app
+    import backend.app.api.main as api_mod
+    from backend.app.api.main import app
 
     stub = MagicMock()
     stub.ollama.health.return_value = True

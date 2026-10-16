@@ -1,4 +1,5 @@
 """Convenience runner: streamlit for the chat UI."""
+
 from __future__ import annotations
 
 import subprocess

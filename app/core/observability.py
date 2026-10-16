@@ -1,4 +1,5 @@
 """Backward-compatibility shim for app.core.observability. Use backend.app.core.observability instead."""
+
 from backend.app.core.observability import (
     LOG_DIR,
     JsonFormatter,
@@ -14,13 +15,13 @@ from backend.app.core.observability import (
 
 __all__ = [
     "LOG_DIR",
-    "RequestIdFilter",
     "JsonFormatter",
-    "get_logger",
-    "set_request_id",
-    "get_request_id",
     "Metrics",
-    "metrics",
+    "RequestIdFilter",
     "Timer",
+    "get_logger",
+    "get_request_id",
+    "metrics",
+    "set_request_id",
     "stable_hash",
 ]
